@@ -12,19 +12,22 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Separator } from "./ui/separator";
+import { navigationItems } from "@/config/site";
 
 export function Header() {
   return (
     <header className="py-4 border-b">
       <nav className="container flex gap-2 justify-between">
         <div className="flex gap-10 items-center">
-          <h1 className="font-semibold">
+          <h1 className="text-lg font-semibold">
             <Link href="/">Next-Shadcn</Link>
           </h1>
-          <ul className="hidden md:flex gap-10 text-sm font-medium">
-            <li>
-              <Link href="">Link</Link>
-            </li>
+          <ul className="hidden md:flex gap-10 font-medium">
+            {navigationItems.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.title}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="hidden md:flex gap-4">
@@ -49,12 +52,14 @@ export function Header() {
                 </SheetDescription>
               </SheetHeader>
               <Separator />
-              <ul className="flex flex-col gap-8 text-sm font-medium">
-                <li>
-                  <SheetClose asChild>
-                    <Link href="">Link</Link>
-                  </SheetClose>
-                </li>
+              <ul className="flex flex-col gap-8 font-medium">
+                {navigationItems.map((item) => (
+                  <li key={item.href}>
+                    <SheetClose asChild>
+                      <Link href={item.href}>{item.title}</Link>
+                    </SheetClose>
+                  </li>
+                ))}
               </ul>
               <div className="mt-auto flex gap-4">
                 <SheetClose asChild>

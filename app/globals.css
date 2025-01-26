@@ -69,7 +69,7 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-  section {
+  .typography {
     h2 {
       @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
     }
